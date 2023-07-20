@@ -1,0 +1,25 @@
+<div class="card">
+    <img class="my-5 mx-4" src="/img/properties/<%=img%>" alt="Card image cap" height="200px" width="300px">
+    <div class="mx-3 my-5" id="card-info">
+        <div class="rating-info">
+            <% for(let i=1;i<=rating;i++) {%>
+                <span class="fa fa-star checked"></span>
+            <% } %>
+            <% for(let i=1;i<=Math.ceil(5-rating);i++) {%>
+                <span class="fa fa-star"></span>
+            <% } %>
+        </div>
+        <img src="/img/<%=choice%>.png" width="30px" class="float-end">
+        <h5 class="PG-Name"><%=name%></h5>
+        <p class="PG-Address"><%=address%></p>
+        <div class="gender-restriction">
+            <img src="/img/<%=gender%>.png" width="50px">
+        </div>
+        <div class="rent_info">
+            <h6 class="d-inline">Rs<%=rent%>/-</h6><span> per month</span>
+        </div>
+        <div class="float-end">
+            <a href="/property_detail/<%=name%>" class="btn btn-custom" style="margin-left:350px">View</a>
+        </div>
+    </div>
+</div>

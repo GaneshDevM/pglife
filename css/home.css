@@ -1,0 +1,216 @@
+img[src="/img/logo.png"]{
+    width: 100px;
+    margin: 15px;
+}
+
+body{
+    user-select: none;
+    caret-color: transparent;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navbar{
+    position:fixed;
+    background-color: rgb(247, 239, 239);
+    z-index: 1;
+    width: 100%;
+}
+.navbar > ul{
+    list-style: none;
+    display: flex;
+    padding: 0px;
+    margin: 0px;
+}
+
+.navbar > ul li{
+    padding: 0px 15px;
+    align-self: center;
+}
+.navbar a{
+   text-decoration: none;
+   color: black;
+}
+
+#searchpanel{
+    position: relative;
+    height: 600px;
+}
+
+.img-container{
+    background-color: black;
+    width: 100%;
+    height: 700px;
+    position:fixed;
+    z-index: -1;
+}
+#bg-img{
+    height: 100%;
+    opacity: 0.6;
+}
+
+#tag{
+   position: absolute;
+   left:20%;
+   top: 45%; 
+   line-height: 2px;
+   display: flex;
+   flex-direction: column;
+} 
+
+
+#tag form{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+
+#tag h1{
+    filter: drop-shadow(0 0 0.75rem rgb(80, 77, 78));
+    align-self: center;
+}
+#tag input{
+    height: 2rem;
+    width: 60%;
+    border: none;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    margin-right: 0px;
+}
+
+#citySearch::placeholder{
+    padding: 10px;
+}
+#search-btn{
+    height: 2rem;
+    padding-top: 1px;
+    margin: 0px;
+    border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.site-info{
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    padding-top: 100px;
+    overflow-x: auto;
+}
+
+.site-info ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0px;
+    margin: 0px;
+}
+
+.mcities{
+    flex-shrink: 1;
+    margin: 20px;
+    border-radius: 45%;
+    padding:20px;
+    box-shadow: 1px 1px 1px 1px rgb(108, 108, 108);
+}
+
+footer{
+    z-index: 2;
+    width: 100%;
+    background-color: black;
+    color:white;
+}
+
+footer ul li{
+    padding: 20px;
+}
+
+
+footer ul li a{
+    color:white;
+}
+
+#sign-in,#sign-up,#modal-login,#modal-signup,#dashboard,#logout{
+    border: none;
+}
+
+#modal-login,#modal-signup{
+  color: rgb(15, 124, 124);
+  background-color: white;
+}
+
+.close{
+    border: none;
+    border-radius: 50%;
+}
+
+#login-email,#login-password,#signup-email,#signup-password,#fullName,#phoneNo,#collegeName{
+    margin: 8px;
+    width: min-content;
+}
+
+.form-group{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#user-img,#password-img{
+    border: 2px solid rgb(204, 201, 201);
+    padding: 4px;
+    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+}
+
+.btn-custom{
+    background-color:rgb(15, 124, 124);
+    color: white;
+    font-weight: 500;
+    width: 135px;
+}
+
+.btn-custom:hover{
+    background-color: rgb(14, 69, 69);
+    color: rgb(210, 219, 221);
+    font-weight: 500;
+}
+
+.modal-footer text{
+    text-align: left;
+}
+
+@media screen and (max-width:1000px) {
+    .img-container{
+        height: 600px;
+    }
+    .navbar a{
+        justify-items: center;
+    }
+    #citySerch{
+        width: 80%;
+    }
+    @media screen and (max-width:400px){
+        .navbar img{
+            width: 20px;
+        }
+        .navbar ul li{
+            font-size: smaller;
+            padding: 0px;
+            margin-right:30px ;
+        }
+        .navbar a>img{
+            width: 50px;
+        }
+        #citySearch::placeholder{
+            content: 'Search city';
+        }
+    }
+}
+
+.none{
+    display: none;
+}

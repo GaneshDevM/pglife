@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best PG's in <%=city%>|PG Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="\css\common.css">
+    <link rel="stylesheet" href="\css\style.css">
+    <link rel="stylesheet" href="\css\home.css">
+</head>
+
+<body>
+    <% if(logged){ %>
+        <%- include('signed_header.ejs') %>
+    <%}else { %>
+        <%- include('unsigned_header.ejs') %>
+    <%} %>
+    
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb px-4">
+                                <li class="breadcrumb-item"><a href="\">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    <%=city%>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <div class="container list-content">
+
+                            <div class="filters container">
+                                <button type="button" id="filter" data-toggle="modal" data-target="#filterModel">
+                                    <img src="/img/filter.png" alt="filter" width="30px">filter
+                                </button>
+                                <button id="desc-rent"><img src="/img/desc.png" alt="filter" width="30px">Highest rent
+                                    first</button>
+                                <button id="asc-rent"><img src="/img/asc.png" alt="filter" width="30px">lowest rent
+                                    first</button>
+                            </div>
+                            <div id="card-holder">
+                                <% if(info){%>
+                                    <% for (var i=0; i < info.length; i++) { %>
+                                        <%- include('card.ejs',info[i]) %>
+                                    <% } %>
+                                    <% if(info.length<2) {%>
+                                            <div style="height: 450px;" class="container">
+                                                <% if(info.length==0){ %>
+                                                    <p>No properties found</p>
+                                                    <% } %>
+                                                </div>
+                                <% }} else { %>
+                                      <div style="height: 450px;" class="container">
+                                           <p>No properties found</p>
+                                      </div>
+                                <% } %>
+                                                    
+                            </div>
+                        </div>
+                        <%- include('filters.ejs') %>
+                        <%- include('footer.ejs') %>
+</body>
+<script src="https://kit.fontawesome.com/e93bc66d7f.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+<script src="/js/index.js"></script>
+
+</html>

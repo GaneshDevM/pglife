@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="addhouse.css">
+</head>
+<body>
+    <form method="post" action="/addhouse" enctype="multipart/form-data">
+    <div class="form-group" id="content">
+        <div class="tags">
+            <div class="input-box">
+                <label for="housename">house Name</label>
+            </div>
+            <div class="input-box" style="height: 88px;">
+                <label for="address"> address</label>
+            </div>
+            <div class="input-box">
+                <label for="city">city</label>
+            </div>
+            <div class="input-box">
+                <label for="images[]">house images</label>
+            </div>
+            <div class="input-box" style="height: 90px;">
+                <label for="description">describe house</label>
+            </div>
+            <div class="input-box">
+                <label for="rent">Rent in Rs</label>
+            </div>
+            <div class="input-box">
+                <label for="gender">Gender preference</label>
+            </div>
+        </div>
+         <div class="inputs">
+            <div class="input-box">
+                <input type="text" name="housename">
+            </div>
+            <div class="input-box">
+                <textarea name="address" id="houseaddress" cols="30" rows="5"></textarea>
+            </div>
+            <div class="input-box">
+                <input type="text" name="city">
+            </div>
+            <div class="input-box">
+                <input type="file" name="images[]" id="houseimage" multiple>
+            </div>
+            <div class="input-box">
+                <textarea name="description" id="describehouse" cols="30" rows="5"></textarea>
+            </div>
+            <div class="input-box">
+                <input type="number" name="rent" min="0">
+            </div>
+            <div class="input-box">
+                <select name="gender" id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="unisex">Unisex</option>
+                </select>
+            </div>
+
+    <button id="create-house" type="submit">Add house</button>
+        </div> 
+    </div>
+    </form>
+    
+    <script src="index.js"></script>
+</body>
+</html>

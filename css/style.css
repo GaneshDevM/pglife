@@ -1,0 +1,111 @@
+body{
+ background-color: whitesmoke;
+}
+
+.navbar{
+    top: 0px;
+    left: 0px;
+    background-color: rgb(247, 239, 239);
+    border-bottom: 2px solid rgb(220, 228, 243);
+}
+nav{
+    position: relative;
+    top: 68px;
+    width: 100%;
+    background-color: rgb(198, 200, 200);
+}
+
+a{
+    color: rgb(15, 124, 124);
+}
+
+.list-content{
+    margin-top: 100px;
+}
+
+.checked {
+    color: orange;
+}
+
+.btn-custom{
+    background-color:rgb(15, 124, 124);
+    color: white;
+    font-weight: 500;
+    width: 135px;
+}
+
+.card{
+  margin:5px 0px;
+}
+
+.btn-custom:hover{
+    background-color: rgb(14, 69, 69);
+    color: rgb(210, 219, 221);
+    font-weight: 500;
+}
+
+
+.filters{
+    height: 50px;   
+    display: flex;
+    justify-content: space-around;
+}
+
+@media screen and (max-width:500px){
+  .filters{
+    flex-direction: column;
+    margin-top: 125px;
+    margin-bottom: 50px;
+  }
+}
+
+.filters a img{
+    border-radius: 45%;
+    margin-right: 10px;
+    margin-left: 20px;
+    box-shadow: 1px 1px 1px 1px rgb(108, 108, 108);
+}
+
+#filter,#asc-rent,#desc-rent{
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(208, 208, 208);
+    margin-bottom: 10px;
+}
+
+#filter:hover,#asc-rent:hover,#desc-rent:hover{
+    background-color: rgb(187, 196, 199);
+}
+
+#filter:active,#asc-rent:active,#desc-rent:active{
+    background-color: rgb(171, 190, 189);
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+@media screen and (max-width:500px){
+    .card{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:900px) and (min-width:500px){
+    #card-holder{
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;  
+     gap: 10px;
+     justify-content: center;
+    }
+    .card{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+    }
+}

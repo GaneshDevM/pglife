@@ -1,0 +1,164 @@
+<div class="navbar mx-0 my-0 p-0">
+    <a href="/"><img src="/img/logo.png" alt="pg life logo"></a>
+    <ul>
+        <li><button id="sign-up"><img src="/img/add-friend.png" width="25px" style="padding: 2px;">
+                Signup</button></li>
+        <li><button id="sign-in"><img src="/img/sign-in.png" width="25px" style="padding: 2px;">login</button>
+        </li>
+    </ul>
+</div>
+
+
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="LoginModalLabel">Login with PGLife</h5>
+                <button type="button" class="close close-login" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="loginForm" method="post" action="/submit">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <img id="user-img" src="/img/user.png" width="30px">
+                        <input type="text" class="form-control" id="login-email" name="email" placeholder="Email"
+                            style="display:inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <img id="password-img" src="/img/lock.png" width="30px">
+                        <input type="password" class="form-control" id="login-password" name="password" placeholder="Password"
+                            style="display:inline-block;">
+                    </div>
+                </div>
+                <div class="modal-footer" style="justify-content: left;">
+                    <button id="login" class="btn btn-custom" style="width:100%">Log In</button>
+                    <hr>
+                    <text><button id="modal-signup">click here</button> to register a new account</text>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="SignupModal" tabindex="-1" role="dialog" aria-labelledby="SignupModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SignupModalLabel">SignUp with PGLife</h5>
+                <button type="button" class="close close-signup" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="signupForm" method="post" action="/user">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="checkbox" name="student" id="stud-check">
+                        <label for="student">student</label>
+                    </div>
+                    <div class="form-group">
+                        <img id="user-img" src="/img/user.png" width="30px"><label for="fullName"></label><input
+                            type="text" class="form-control" id="fullName" placeholder="Full Name" name="fullName"
+                            style="display:inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <img id="user-img" src="/img/call.png" width="30px"><label for="phone"></label><input type="tel"
+                            class="form-control" id="phoneNo" placeholder="Phone Number" pattern="[0-9]{10}"
+                            name="phone" style="display:inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <img id="user-img" src="/img/mail.png" width="30px"><label for="email"></label><input
+                            type="email" class="form-control" id="signup-email" placeholder="Email" name="email"
+                            style="display:inline-block;">
+                    </div>
+                    <div class="form-group">
+                        <img id="password-img" src="/img/lock.png" width="30px"><label for="password"></label><input
+                            type="password" class="form-control" id="signup-password" placeholder="Password" name="password"
+                            style="display:inline-block;">
+                    </div>
+                    <div class="form-group none" id="college-input">
+                        <img id="user-img" src="/img/college.png" width="30px"><label for="collegeName"></label><input
+                            type="text" class="form-control" id="collegeName" placeholder="College Name"
+                            name="collegeName" style="display:inline-block;">
+                    </div>
+                    <legend class="form-group">Gender:</legend>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">
+                                male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">
+                                female
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer" style="justify-content: left;">
+                    <button id="createAccount" class="btn btn-custom" style="width:100%">Create
+                        Account</button>
+                    <hr>
+                    <text>already have an account<button id="modal-login">Login</button>
+                    </text>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let createAccount = document.getElementById("createAccount");
+    let stud_check = document.getElementById("stud-check")
+    let college = document.getElementById("college-input")
+
+    stud_check.addEventListener('change', () => {
+    if (stud_check.checked) {
+      college.classList.remove("none")
+    } else {
+      college.classList.add("none")
+    }
+  });
+
+
+  function clearForm(form) {
+       let formElements = form.elements;
+     for (let i = 0; i < formElements.length; i++) {
+      let element = formElements[i];
+       if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+         element.value = '';
+       }
+        element.checked=false;
+     }
+   }
+    createAccount.addEventListener('click', function (event) {
+        event.preventDefault();
+        let form = document.getElementById("signupForm");
+        let formData = new FormData(form);
+
+        let httpRequest = new XMLHttpRequest();
+
+        httpRequest.open('POST', '/user');
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState === XMLHttpRequest.DONE) {
+                if (httpRequest.status === 200) {
+                    alert(httpRequest.responseText+', User successfully signed up');
+                    clearForm(form);
+                    $('.close-signup').click();
+                    $('#LoginModal').modal('show');
+                } else {
+                    alert('Error: ' + httpRequest.status);
+                }
+            }
+        };
+        httpRequest.send(new URLSearchParams(formData));
+    });
+
+</script>

@@ -1,0 +1,18 @@
+<div class="navbar mx-0 my-0 p-0">
+    <a href="/"><img src="/img/logo.png" alt="pg life logo"></a>
+    <ul>
+        <li><button id="dashboard"><img src="/img/menu.png" width="25px" style="padding: 2px;">
+                dashboard</button></li>
+        <li><button id="logout"><img src="/img/logout.png" width="25px" style="padding: 2px;">logout</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    document.getElementById('dashboard').addEventListener('click',function(){
+        window.location.href = '/dashboard'
+    })
+    document.getElementById('logout').addEventListener('click',function(){
+        window.location.href = '/logout'
+    })
+</script>

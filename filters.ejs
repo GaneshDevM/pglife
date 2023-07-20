@@ -1,0 +1,38 @@
+  <div class="modal fade" id="filterModel" tabindex="-1" role="dialog" aria-labelledby="filterModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filterModelLabel">Filter based on Gender</h5>
+          <button type="button" class="close" data-dismiss="filtermodal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="filter-form">
+              <div>
+                  <input type="radio" id="Male" name="filter" value="Male">
+                  <label for="Male">
+                    <img src="/img/male.png" alt="male" width="40px">Male
+                  </label>
+              </div>
+              <div>
+                  <input type="radio" id="Female" name="filter" value="Female">
+                  <label for="Female">
+                    <img src="/img/female.png" alt="female" width="40px">Female
+                  </label>
+              </div>
+              <div>
+                  <input type="radio" id="Unisex" name="filter" value="Unisex">
+                  <label for="Unisex">
+                    <img src="/img/unisex.png" alt="unisex" width="40px">Unisex
+                  </label>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="clearfilter">Clear filter</button>
+          <button type="button" class="btn btn-primary" data-submit="filtermodal">Filter</button>
+        </div>
+      </div>
+    </div>
+  </div>
