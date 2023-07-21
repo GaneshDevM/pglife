@@ -19,11 +19,8 @@ app.use(session({
     saveUninitialized: false
 }));
 
-const externalDBUrl = process.env.EXTERNAL_DATABASE_URL;
+const internalDBUrl = process.env.INTERNAL_DATABASE_URL;
 
-// Parse the URL to extract connection parameters
-const { hostname, port, username, password, pathname } = new URL(externalDBUrl);
-const databaseName = pathname.substring(1);
 app.get("/", (req, res) => {
     if (req.session.userId) {
         res.render(__dirname + "/index.ejs", { logged: true })
@@ -35,16 +32,8 @@ app.get("/", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
     let ans = {};
 
@@ -116,16 +105,8 @@ app.get("/logout", (req, res) => {
 
 app.get("/property_detail/:prop_name", (req, res) => {
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
     pool.connect((err, client, release) => {
         if (err) {
@@ -160,16 +141,8 @@ app.get("/property_detail/:prop_name", (req, res) => {
 
 app.get("/pg/:city", (req, res) => {
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
     pool.connect((err, client, release) => {
         if (err) {
@@ -224,16 +197,8 @@ app.get('/search', (req, res) => {
     const searchCity = req.query.citySearch;
 
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
     pool.connect((err, client, release) => {
         if (err) {
@@ -267,16 +232,8 @@ app.get("/pg/:city/filter", (req, res) => {
     const { Pool } = require('pg');
 
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
 pool.connect((err, client, release) => {
   if (err) {
@@ -328,16 +285,8 @@ pool.connect((err, client, release) => {
 
 app.get("/pg/:city/order", (req, res) => {
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
 pool.connect((err, client, release) => {
   if (err) {
@@ -392,16 +341,8 @@ app.post('/submit', (req, res) => {
 
 
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
 
 pool.connect((err, client, release) => {
   if (err) {
@@ -434,16 +375,8 @@ app.post('/user', (req, res) => {
     let userid = null;
     
     const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
     
     pool.connect((err, client, release) => {
       if (err) {
@@ -500,16 +433,8 @@ app.put("/favourites", (req, res) => {
       }
       
       const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
       
       pool.connect((err, client, release) => {
         if (err) {
@@ -587,16 +512,8 @@ app.put("/unfavourites", (req, res) => {
       }
       
       const pool = new Pool({
-        host: hostname,
-        port: port,
-        user: username,
-        password: password,
-        database: databaseName,
-        ssl: {
-          // The ssl option enables SSL/TLS
-          rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-        },
-      });
+        connectionString: internalDBUrl,
+    });
       
       pool.connect((err, client, release) => {
         if (err) {
@@ -682,16 +599,8 @@ app.post('/addhouse', upload.array('images[]',3), function (req, res) {
   const uploadedFiles = req.files;
 
   const pool = new Pool({
-    host: hostname,
-    port: port,
-    user: username,
-    password: password,
-    database: databaseName,
-    ssl: {
-      // The ssl option enables SSL/TLS
-      rejectUnauthorized: false, // Set this to false if your server uses self-signed SSL/TLS certificate
-    },
-  });
+    connectionString: internalDBUrl,
+});
 
   let houseid = null;
 
